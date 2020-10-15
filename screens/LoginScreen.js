@@ -1,6 +1,6 @@
 import React, { useState, useReducer, useContext } from "react";
-import { View, Text, TextInput, Button } from "react-native";
-import {AuthContext} from '../context/context'
+import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import { AuthContext } from "../context/context";
 
 const LoginScreen = () => {
   const [userName, setUserName] = useState("");
@@ -8,14 +8,8 @@ const LoginScreen = () => {
   const { login } = useContext(AuthContext);
 
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: "center",
-        padding: 10,
-      }}
-    >
-      <Text>This is Login screen</Text>
+    <View style={styles.view}>
+      {/* <Text>This is Login screen</Text> */}
       <View
         style={{
           height: "30%",
@@ -67,5 +61,13 @@ const LoginScreen = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  view: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
 
 export default LoginScreen;

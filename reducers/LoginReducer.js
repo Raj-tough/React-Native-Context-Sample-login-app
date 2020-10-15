@@ -1,8 +1,14 @@
-import {LOGIN, LOGOUT} from '../constants/LoginConstants'
-
+import {
+  LOGIN,
+  LOGOUT,
+  RETRIEVE_TOKEN,
+  IS_NOT_FIRST_TIME,
+} from "../constants/LoginConstants";
 
 export const loginInitialState = {
-  loggedIn : false
+  loggedIn: false,
+  userToken: null,
+  isNotFirstTime: false,
 };
 
 export const loginReducer = (state, action) => {
@@ -10,15 +16,24 @@ export const loginReducer = (state, action) => {
     case LOGIN:
       return {
         ...state,
-        loggedIn : true
+        loggedIn: true,
+        userToken: action.userToken,
       };
-    case LOGOUT : 
-    return {
+    case LOGOUT:
+      return {
         ...state,
-        loggedIn: false
-    }
+        loggedIn: false,
+        userToken: null,
+      };
+    case RETRIEVE_TOKEN:
+      return {
+        ...state,
+        userToken: action.userToken,
+      };
+    case IS_NOT_FIRST_TIME:
+      return { ...state, isNotFirstTime: true };
+
     default:
       return state;
   }
- 
 };
